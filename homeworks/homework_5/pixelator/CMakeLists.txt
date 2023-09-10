@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16..3.24)
+include(CMakePrintHelpers)
 project(pixelator VERSION 1
   DESCRIPTION "Pixelate images in terminal"
   LANGUAGES CXX)
@@ -8,6 +9,8 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 message(STATUS "CMAKE_BUILD_TYPE: ${CMAKE_BUILD_TYPE}")
+
+cmake_print_variables(PROJECT_SOURCE_DIR)
 
 # Create a pseudo-library to propagate the needed flags.
 add_library(cxx_setup INTERFACE)

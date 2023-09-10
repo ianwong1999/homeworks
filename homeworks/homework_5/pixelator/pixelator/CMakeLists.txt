@@ -6,26 +6,25 @@
 # - pixelate_image
 
 
-
 add_library(stb_image_data_view INTERFACE)
 target_sources(stb_image_data_view INTERFACE stb_image_data_view.hpp)
 target_link_libraries(stb_image_data_view INTERFACE cxx_setup ftxui::screen)
-target_link_libraries(stb_image_data_view INTERFACE cxx_setup stb::stb)
+target_link_libraries(stb_image_data_view INTERFACE cxx_setup stb)
 
 add_library(drawer INTERFACE)
 target_sources(drawer INTERFACE drawer.hpp)
 target_link_libraries(drawer INTERFACE cxx_setup ftxui::screen)
-target_link_libraries(drawer INTERFACE cxx_setup stb::stb)
+target_link_libraries(drawer INTERFACE cxx_setup stb)
 
 add_library(image INTERFACE)
 target_sources(image INTERFACE image.hpp)
 target_link_libraries(image INTERFACE cxx_setup ftxui::screen)
-target_link_libraries(image INTERFACE cxx_setup stb::stb)
+target_link_libraries(image INTERFACE cxx_setup stb)
 
 add_library(pixelate_image INTERFACE)
 target_sources(pixelate_image INTERFACE pixelate_image.hpp)
 target_link_libraries(pixelate_image INTERFACE cxx_setup ftxui::screen)
-target_link_libraries(pixelate_image INTERFACE cxx_setup stb::stb)
+target_link_libraries(pixelate_image INTERFACE cxx_setup stb)
 
 
 include_directories(${PROJECT_SOURCE_DIR}/pixelator)

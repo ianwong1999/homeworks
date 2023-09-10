@@ -8,6 +8,8 @@ target_link_libraries(use_stb_image PRIVATE cxx_setup stb::stb)
 # There must be a binary `pixelate` here
 
 add_executable(pixelate pixelate.cpp)
+
+target_link_libraries(pixelate PRIVATE cxx_setup stb::stb)
 target_link_libraries(pixelate PRIVATE cxx_setup stb_image_data_view)
 target_link_libraries(pixelate PRIVATE cxx_setup image)
 target_link_libraries(pixelate PRIVATE cxx_setup pixelate_image)
