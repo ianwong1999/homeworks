@@ -57,19 +57,11 @@ public:
 		res.reserve(image_.size() * 3);
 
 		for (const auto& col : image_) {
-			const auto c = col.Print(false);
+			uint32_t val = *reinterpret_cast<const uint32_t*>(&col);
 
-			int pt1 = 0;
-
-			while (c[pt1] != ';') pt1++;
-
-			int pt2 = pt1 + 1;
-
-			while (c[pt2] != ';') pt2++;
-
-			int r = stoi(c.substr(0, pt1));
-			int g = stoi(c.substr(pt1 + 1, pt2 - pt1 - 1));
-			int b = stoi(c.substr(pt2 + 1));
+			int r = (val >> 16) & 255;
+			int g = (val >> 8) & 255;
+			int b = val & 255;
 
 			res += static_cast<unsigned char>(r);
 			res += static_cast<unsigned char>(g);
