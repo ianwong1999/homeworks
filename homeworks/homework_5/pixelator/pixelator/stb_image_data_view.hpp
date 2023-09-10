@@ -9,6 +9,7 @@
 #include "util.h"
 
 #include <filesystem>
+#include <vector>
 
 namespace {
 	static constexpr auto kLoadAllChannels{0};
@@ -76,6 +77,16 @@ public:
 	unsigned char at(int row, int col, int channel) const {
 		const int pt = channels_ * (row * cols_ + col) + channel;
 		return image_[pt];
+	}
+
+	std::vector<ftxui::Color> get_image() const {
+		std::vector<ftxui::Color> res(rows_ * cols_);
+
+		for (int i = 0; i < rows_; i++) for (int j = 0; j < cols_; j++) {
+			res[i * cols_ + j] = at(i, j);
+		}
+
+		return res;
 	}
 
 private:

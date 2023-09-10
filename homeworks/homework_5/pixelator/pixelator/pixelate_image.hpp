@@ -18,8 +18,8 @@ public:
 		const auto factor_rows = smaller_size.rows / static_cast<float>(image.rows());
 		const auto smallest_factor = std::min(1.0f, std::min(factor_cols, factor_rows));
 
-		rows_ = Scale(image.rows(), smallest_factor);
-		cols_ = Scale(image.cols(), smallest_factor);
+		rows_ = Scale(image.rows() - 1, smallest_factor) + 1;
+		cols_ = Scale(image.cols() - 1, smallest_factor) + 1;
 
 		image_.resize(rows_ * cols_);
 
@@ -30,6 +30,7 @@ public:
 
 		for (int i = 0; i < image.rows(); i++) {
 			for (int j = 0; j < image.cols(); j++) {
+
 				const auto scaled_row = Scale(i, smallest_factor);
 				const auto scaled_col = Scale(j, smallest_factor);
 
