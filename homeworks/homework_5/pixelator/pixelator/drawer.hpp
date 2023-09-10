@@ -39,6 +39,17 @@ public:
 	}
 
 	void Draw() {
+		set_image_on_screen();
+		screen.Print();
+	}
+
+	std::string ToString() {
+		set_image_on_screen();
+		return screen.ToString();
+	}
+
+private:
+	void set_image_on_screen() {
 		for (int i = 0; i < image_rows_; i++) {
 			for (int j = 0; j < image_cols_ * 2; j++) {
 				auto& pixel = screen.PixelAt(j, i);
@@ -48,30 +59,8 @@ public:
 				pixel.character = ' ';
 			}
 		}
-		screen.Print();
+
 	}
-
-	std::string ToString() const {
-		std::string res;
-
-		res.reserve(image_.size() * 3);
-
-		for (const auto& col : image_) {
-			uint32_t val = *reinterpret_cast<const uint32_t*>(&col);
-
-			int r = (val >> 16) & 255;
-			int g = (val >> 8) & 255;
-			int b = val & 255;
-
-			res += static_cast<unsigned char>(r);
-			res += static_cast<unsigned char>(g);
-			res += static_cast<unsigned char>(b);
-		}
-
-		return res;
-	}
-
-private:
 	int rows_;
 	int cols_;
 	std::vector<ftxui::Color> image_;
