@@ -1,8 +1,11 @@
 #pragma once
 
 #include "ftxui/screen/color.hpp"
+
+#ifndef
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
+#endif
 
 #include "util.h"
 
