@@ -13,11 +13,8 @@ namespace pixelator {
 class Drawer {
 public:
 	explicit Drawer(ftxui::Dimensions dim) : screen(ftxui::Screen::Create(ftxui::Dimension::Full())) {
-		const auto full = ftxui::Dimension::Full();
-
-
-		rows_ = std::min(full.dimy, dim.dimy);
-		cols_ = std::min(full.dimx, dim.dimx * 2);
+		rows_ = dim.dimy;
+		cols_ = dim.dimx * 2;
 
 		screen = ftxui::Screen::Create(ftxui::Dimension::Fixed(cols_), ftxui::Dimension::Fixed(rows_));
 	}
@@ -37,14 +34,16 @@ public:
 	template<typename T>
 	void Set(T&& view) {
 		image_ = view.get_image();
+		image_rows_ = view.rows();
+		image_cols_ = view.cols();
 	}
 
 	void Draw() {
-		for (int i = 0; i < rows_; i++) {
-			for (int j = 0; j < cols_; j++) {
+		for (int i = 0; i < image_rows_; i++) {
+			for (int j = 0; j < image_cols_ * 2; j++) {
 				auto& pixel = screen.PixelAt(j, i);
 
-				const int index = i * cols_ + j / 2;
+				const int index = i * image_cols_ + j / 2;
 				pixel.background_color = image_[index];
 				pixel.character = ' ';
 			}
@@ -84,6 +83,8 @@ private:
 	int rows_;
 	int cols_;
 	std::vector<ftxui::Color> image_;
+	int image_rows_;
+	int image_cols_;
 	ftxui::Screen screen;
 };
 

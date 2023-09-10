@@ -62,6 +62,13 @@ public:
 		return image_;
 	}
 
+	int rows() const {
+		return rows_;
+	}
+	int cols() const {
+		return cols_;
+	}
+
 private:
 	int Scale(int number, float factor) {
 		  return static_cast<int>(number * factor);

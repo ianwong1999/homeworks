@@ -65,7 +65,7 @@ public:
 	}
 
 	bool empty() const noexcept {
-		return rows_ == 0 || cols_ == 0;
+		return image_ == nullptr;
 	}
 
 	ftxui::Color at(int row, int col) const {
