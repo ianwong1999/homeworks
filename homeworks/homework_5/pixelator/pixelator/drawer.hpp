@@ -56,7 +56,6 @@ private:
 
 				const int index = i * image_cols_ + j / 2;
 				pixel.background_color = image_[index];
-				pixel.character = ' ';
 			}
 		}
 
