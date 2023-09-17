@@ -36,4 +36,7 @@ if(BUILD_TESTING)
   # Name it pixelator_tests.
   # Also use gtest_discover_tests(pixelator_tests)
   # to register them with CTest
+  add_executable(pixelator_tests pixelator_tests.cpp)
+  target_link_libraries(pixelator_tests stb_image_data_view drawer image pixelate_image GTest::gtest_main)
+  gtest_discover_tests(pixelator_tests)
 endif()

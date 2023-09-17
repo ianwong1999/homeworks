@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <iostream>
 
 namespace pixelator {
 
@@ -14,9 +15,9 @@ class Drawer {
 public:
 	explicit Drawer(ftxui::Dimensions dim) : screen(ftxui::Screen::Create(ftxui::Dimension::Full())) {
 		rows_ = dim.dimy;
-		cols_ = dim.dimx * 2;
+		cols_ = dim.dimx;
 
-		screen = ftxui::Screen::Create(ftxui::Dimension::Fixed(cols_), ftxui::Dimension::Fixed(rows_));
+		screen = ftxui::Screen::Create(dim);
 	}
 
 	int rows() const noexcept {
