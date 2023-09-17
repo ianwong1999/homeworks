@@ -15,7 +15,7 @@ class Drawer {
 public:
 	explicit Drawer(ftxui::Dimensions dim) : screen(ftxui::Screen::Create(ftxui::Dimension::Full())) {
 		rows_ = dim.dimy;
-		cols_ = dim.dimx;
+		cols_ = dim.dimx * 2;
 
 		screen = ftxui::Screen::Create(dim);
 	}
